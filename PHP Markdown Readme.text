@@ -1,3 +1,17 @@
+DAN ROSENSTARK MODIFICATION FOR WORDPRESS
+============
+Now you can use this selectively in Wordpress with the **Occasional Markdown** Plugin. Just copy the `OccasionalMarkdown.php` file to the plugins directory and activate it. Then put markdown between pre tags like this:
+
+	<pre class="markdown">
+	**Markdown here!**
+	</pre>
+
+	**this is not markdown**
+
+	<pre class="markdown">
+	**More markdown here!**
+	</pre>
+
 PHP Markdown
 ============
 
