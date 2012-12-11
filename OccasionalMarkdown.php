@@ -76,31 +76,44 @@ function Markdown($text) {
 	//
 	// Actual functionality
 	//
-	function replaceTagg($content='')
+	function parseOccasionalMarkdownInner($content='')
 	{
 		$openTag = "<pre class=\"markdown\">";
 		$closeTag = "</pre>";
-		$contentStart = strpos($content, $openTag) + strlen($openTag);
+		$openTagStart = strpos($content, $openTag);
 		$contentEnd = strpos($content, $closeTag);
+		$contentStart = $openTagStart + strlen($openTag);
+		$contentLength = $contentEnd - $contentStart;
 
-		if ($contentEnd > $contentStart) {
-			$textBefore = substr($content, 0, $contentStart - strlen($openTag));
-			$markdownText = substr($content, $contentStart, $contentEnd-$contentStart);
-			$markdownText = Markdown($markdownText);
-
-			$textAfter = substr($content, $contentEnd + strlen($closeTag));
-
-			$newContent = $textBefore . $markdownText . $textAfter;
-
-			return replaceTagg($newContent); // recursive now
-		} else 
+		if ($contentEnd === false || $openTagStart === false || $contentEnd <= $contentStart)
 			return $content;
+
+		$textBefore = substr($content, 0, $openTagStart) . "<div class='markdown'>";
+		$markdownText = substr($content, $contentStart, $contentLength);
+		$markdownText = Markdown($markdownText);
+
+		$textAfter =  "</div>" . substr($content, $contentEnd + strlen($closeTag));
+
+		$newContent = $textBefore . $markdownText . $textAfter;
+
+    	return parseOccasionalMarkdownInner($newContent); // recursive now
+
+
 	}
 
-//
-// Hooks
-//
-add_filter('the_content', 'replaceTagg', 1);
+	function parseOccasionalMarkdown($content='')
+	{
+		$retVal = parseOccasionalMarkdownInner($content);
+		// this next line is to deal with an obscure bug in iPhone where it renders lists incorrectly
+		// http://stackoverflow.com/questions/13811747
+		$retVal = str_replace("<li><a", "<li>&thinsp;<a", $retVal);
+		return $retVal;
+	}
+
+	//
+	// Hooks
+	//
+	add_filter('the_content', 'parseOccasionalMarkdown', 1);
 
 
 ### bBlog Plugin Info ###
