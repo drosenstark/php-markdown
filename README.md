@@ -9,8 +9,29 @@ Use this Wordpress plugin by activating it and then wrap your markdown in `<pre 
 
 In addition, it handles [this rare bug in Mobile Safari](http://stackoverflow.com/questions/13811747/bizarre-result-on-safari-for-iphone-ol-li-a-or-ul-li-a).
 
-## How do you use it?
+## How do I install it?
 
 Put all of these files -- the only one that matters is `OccasionalMarkdown.php` -- in a new plugin directory, e.g., `your-wordpress-root/wp-content/plugins/occasional-markdown`
 
 Wordpress will pick it up automatically in the admin console!
+
+## How do I use it?
+
+In any Blog Post, you can use these `pre` tags
+
+```
+<pre class="markdown">
+**Markdown here!**
+</pre>
+
+**this is not markdown**
+
+<pre class="markdown">
+**More markdown here!**
+</pre>
+```
+
+This will render only the bits in between the `pre` tags as markdown.
+
+
+
