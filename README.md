@@ -35,7 +35,7 @@ This will render only the bits in between the `pre` tags as markdown, so somethi
 
 **Markdown here!**
 
-`**this is not markdown**`
+&#42;&#42;this is not markdown&#42;&#42;
 
 **More markdown here!**
 
