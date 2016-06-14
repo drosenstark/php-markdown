@@ -8,3 +8,9 @@ This is almost entirely based on PHP Markdown. PHP Markdown is a port to PHP of 
 Use this Wordpress plugin by activating it and then wrap your markdown in `<pre class="markdown">` and `</pre>` tags. This plugin also wraps your markdown in a div of class `markdown` for styling.
 
 In addition, it handles [this rare bug in Mobile Safari](http://stackoverflow.com/questions/13811747/bizarre-result-on-safari-for-iphone-ol-li-a-or-ul-li-a).
+
+## How do you use it?
+
+Put all of these files -- the only one that matters is `OccasionalMarkdown.php` -- in a new plugin directory, e.g., `your-wordpress-root/wp-content/plugins/occasional-markdown`
+
+Wordpress will pick it up automatically in the admin console!
