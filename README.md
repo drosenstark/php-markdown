@@ -31,7 +31,15 @@ In any Blog Post, you can use these `pre` tags
 </pre>
 ```
 
-This will render only the bits in between the `pre` tags as markdown.
+This will render only the bits in between the `pre` tags as markdown, so something kinda like this:
+
+**Markdown here!**
+
+`**this is not markdown**`
+
+**More markdown here!**
+
+
 
 
 
